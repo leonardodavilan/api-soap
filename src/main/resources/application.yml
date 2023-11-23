@@ -1,0 +1,6 @@
+#logging.config: classpath:logback-spring.xml
+prima:
+  restapi:
+    proxy:
+      opReniec:
+        baseUrl: http://10.74.35.17:9073/op-reniec/

@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<s:schema xmlns:s="http://www.w3.org/2001/XMLSchema"
+          targetNamespace="http://tempuri.org/"
+          elementFormDefault="qualified"
+          xmlns:tns="http://tempuri.org/">
+    <s:element name="ConsultarDNI">
+        <s:complexType>
+            <s:sequence>
+                <s:element minOccurs="0" maxOccurs="1" name="DNI" type="s:string"/>
+                <s:element minOccurs="0" maxOccurs="1" name="datosAuditoria" type="tns:DatosAuditoria"/>
+            </s:sequence>
+        </s:complexType>
+    </s:element>
+    <s:complexType name="DatosAuditoria">
+        <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CodAgencia" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="NombreAgencia" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="CodEjecutivo" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="NombreEjecutivo" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="IP" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="Version" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="CodigoInstitucionSolicitante" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="CaracteresVerificacion" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="DNIEjecutivo" type="s:string"/>
+            <s:element minOccurs="1" maxOccurs="1" name="IdLog" type="s:int"/>
+        </s:sequence>
+    </s:complexType>
+    <s:element name="ConsultarDNIResponse">
+        <s:complexType>
+            <s:sequence>
+                <s:element minOccurs="0" maxOccurs="1" name="ConsultarDNIResult" type="tns:RespDNI"/>
+            </s:sequence>
+        </s:complexType>
+    </s:element>
+    <s:complexType name="RespDNI">
+        <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Cabecera" type="tns:Cabecera"/>
+            <s:element minOccurs="0" maxOccurs="1" name="Resultado" type="tns:Resultado"/>
+            <s:element minOccurs="0" maxOccurs="1" name="DatosReniec" type="tns:RespDNIDatos"/>
+            <s:element minOccurs="0" maxOccurs="1" name="DatosPensiones" type="tns:RespDNIDatos"/>
+            <s:element minOccurs="0" maxOccurs="1" name="DataReporte">
+                <s:complexType>
+                    <s:sequence>
+                        <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax"/>
+                        <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax"/>
+                    </s:sequence>
+                </s:complexType>
+            </s:element>
+        </s:sequence>
+    </s:complexType>
+    <s:complexType name="Cabecera">
+        <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Version" type="s:string"/>
+            <s:element minOccurs="1" maxOccurs="1" name="LongitudCabecera" type="s:int"/>
+            <s:element minOccurs="0" maxOccurs="1" name="TipoServicio" type="s:string"/>
+            <s:element minOccurs="1" maxOccurs="1" name="LongitudTotalTrama" type="s:int"/>
+            <s:element minOccurs="0" maxOccurs="1" name="Fragmentacion" type="s:string"/>
+            <s:element minOccurs="1" maxOccurs="1" name="TTL" type="s:int"/>
+            <s:element minOccurs="0" maxOccurs="1" name="TipoConsulta" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="CaracteresVerificacion" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="CodigoInstitucionSolicitante" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="CodigoServidorRENIEC" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="AgenciaInstitucionSolicitante" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="UsuarioFinalInstitucionSolicitante" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="HostFinalInstitucionSolicitante" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="Reservado" type="s:string"/>
+        </s:sequence>
+    </s:complexType>
+    <s:complexType name="Resultado">
+        <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Estado" type="tns:EstadoEnum"/>
+            <s:element minOccurs="0" maxOccurs="1" name="MensajeInterno" type="s:string"/>
+        </s:sequence>
+    </s:complexType>
+    <s:simpleType name="EstadoEnum">
+        <s:restriction base="s:string">
+            <s:enumeration value="Exito"/>
+            <s:enumeration value="Error"/>
+        </s:restriction>
+    </s:simpleType>
+    <s:complexType name="RespDNIDatos">
+        <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DatosComplementarios" type="tns:DatosComplementarios"/>
+            <s:element minOccurs="0" maxOccurs="1" name="CodigoError" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="NumeroDNI" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="DigitoVerificacion" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="ApellidoPaterno" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="ApellidoMaterno" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="ApellidoCasada" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="Nombres" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="CodigoUbigeoDepartamentoDomicilio" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="CodigoUbigeoProvinciaDomicilio" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="CodigoUbigeoDistritoDomicilio" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="DepartamentoDomicilio" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="ProvinciaDomicilio" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="DistritoDomicilio" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="EstadoCivil" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="CodigoGradoInstruccion" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="Estatura" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="Sexo" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="DocumentoSustentatorioTipoDoc" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="DocumentoSustentatorioNumeroDoc" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="CodigoUbigeoDepartamentoNacimiento" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="CodigoUbigeoProvinciaNacimiento" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="CodigoUbigeoDistritoNacimiento" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="DepartamentoNacimiento" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="ProvinciaNacimiento" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="DistritoNacimiento" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="FechaNacimiento" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="NombrePadre" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="NombreMadre" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="FechaInscripcion" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="FechaExpedicion" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="ConstanciaVotacion" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="Restriccion" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="PrefijoDireccion" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="Direccion" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="NumeroDireccion" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="BlockChalet" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="Interior" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="Urbanizacion" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="Etapa" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="Manzana" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="Lote" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="PrefijoBlockChalet" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="PrefijoDptoPisoInterior" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="PrefijoUrbCondResid" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="Reservado" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="Foto" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="Firma" type="s:string"/>
+        </s:sequence>
+    </s:complexType>
+    <s:complexType name="DatosComplementarios">
+        <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DescEstadoCivil" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="DescGradoInstruccion" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="DescSexo" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="DescConstanciaVotacion" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="DescRestriccion" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="DescPrefijoDireccion" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="DescPrefijoBlockChalet" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="DescPrefijoDptoPisoInterior" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="DescPrefijoUrbCondResid" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="DireccionCompleta" type="s:string"/>
+        </s:sequence>
+    </s:complexType>
+    <s:element name="ConsultaXNombres">
+        <s:complexType>
+            <s:sequence>
+                <s:element minOccurs="0" maxOccurs="1" name="apellidoPaterno" type="s:string"/>
+                <s:element minOccurs="0" maxOccurs="1" name="apellidoMaterno" type="s:string"/>
+                <s:element minOccurs="0" maxOccurs="1" name="nombres" type="s:string"/>
+                <s:element minOccurs="0" maxOccurs="1" name="inicio" type="s:string"/>
+                <s:element minOccurs="1" maxOccurs="1" name="cant" type="s:int"/>
+                <s:element minOccurs="0" maxOccurs="1" name="datosAuditoria" type="tns:DatosAuditoria"/>
+            </s:sequence>
+        </s:complexType>
+    </s:element>
+    <s:element name="ConsultaXNombresResponse">
+        <s:complexType>
+            <s:sequence>
+                <s:element minOccurs="0" maxOccurs="1" name="ConsultaXNombresResult" type="tns:RespNombres"/>
+            </s:sequence>
+        </s:complexType>
+    </s:element>
+    <s:complexType name="RespNombres">
+        <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Resultado" type="tns:Resultado"/>
+            <s:element minOccurs="0" maxOccurs="1" name="Cabecera" type="tns:Cabecera"/>
+            <s:element minOccurs="0" maxOccurs="1" name="SubCabecera" type="tns:RespNombresCabecera"/>
+            <s:element minOccurs="0" maxOccurs="1" name="Detalles" type="tns:ArrayOfRespNombresDetalle"/>
+        </s:sequence>
+    </s:complexType>
+    <s:complexType name="RespNombresCabecera">
+        <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CodigoError" type="s:string"/>
+            <s:element minOccurs="1" maxOccurs="1" name="NumeroTotalCoincidencias" type="s:int"/>
+            <s:element minOccurs="0" maxOccurs="1" name="Reservado" type="s:string"/>
+        </s:sequence>
+    </s:complexType>
+    <s:complexType name="ArrayOfRespNombresDetalle">
+        <s:sequence>
+            <s:element minOccurs="0" maxOccurs="unbounded" name="RespNombresDetalle" nillable="true" type="tns:RespNombresDetalle"/>
+        </s:sequence>
+    </s:complexType>
+    <s:complexType name="RespNombresDetalle">
+        <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="NumeroDNI" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="CaracterVerificacion" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="TipoFichaRegistral" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="ApellidoPaterno" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="ApellidoMaterno" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="Prenombres" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="Datos" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="Imagen" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="Reservado" type="s:string"/>
+        </s:sequence>
+    </s:complexType>
+</s:schema>

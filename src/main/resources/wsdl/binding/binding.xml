@@ -1,0 +1,11 @@
+<jxb:bindings xmlns:s="http://www.w3.org/2001/XMLSchema"
+              xmlns:jxb="http://java.sun.com/xml/ns/jaxb" version="2.1">
+
+    <jxb:bindings schemaLocation="../schema/schema.xsd">
+        <jxb:bindings
+                node="//s:element[@name='DataReporte']/s:complexType/s:sequence/s:any[@namespace='urn:schemas-microsoft-com:xml-diffgram-v1']">
+            <jxb:property name="any2" />
+        </jxb:bindings>
+    </jxb:bindings>
+
+</jxb:bindings>
